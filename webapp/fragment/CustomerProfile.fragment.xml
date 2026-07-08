@@ -1,0 +1,51 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog 
+      title="Gift Voucher Tracker - Mall Customer Profile"
+      contentWidth="35rem">
+
+      <VBox class="sapUiMediumMargin">
+      
+        <Label text="Cust.Mobile Number" required="true"/>
+        <Input id="custMobile"/>
+
+        <Label text="Mobile Country Code"/>
+          <Select 
+                                id="customerMobileSelect"
+                                width="100%"
+                                items="{path: '/CountryCodes'}">
+                                <core:Item 
+                                    key="{code}"
+                                    text="{code}"/>
+                            </Select>
+        <Label text="Customer Title"/>
+          <Select 
+              id="customerNameSelect"
+              width="100%"
+              items="{path: '/Salutations'}">
+              <core:Item 
+                  key="{code}"
+                  text="{name}"/>
+          </Select>        
+
+        <Label text="Customer Name" required="true"/>
+        <Input id="custName"/>
+
+
+        <Label text="Customer Email"/>
+        <Input id="custEmail"/>
+
+      </VBox>
+
+      <beginButton>
+      <Button text="Cancel" press="onCloseCustomerProfile"/>
+      </beginButton>
+
+      <endButton>
+        <Button text="Add Customer" press="onAddCustomer"/>
+      </endButton>
+    
+      </Dialog>   
+</core:FragmentDefinition>    

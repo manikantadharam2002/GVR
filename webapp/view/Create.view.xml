@@ -1,0 +1,310 @@
+<mvc:View
+    controllerName="gvtracker.controller.Create"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+
+    <Page showHeader="false"
+           showFooter="true">
+      <content>
+            <Toolbar>
+                <Button
+                     icon="sap-icon://nav-back"
+                     type="Transparent"
+                     tooltip="Back"
+                     press="onBack"/>
+            
+
+            
+                <Title text="Gift Voucher Tracker - Gift Issue to Customer Activity - CREATE Screen"/>
+              </Toolbar>
+
+            <Panel class="sapUiResponsiveMargin"
+                    backgroundDesign="Transparent"
+                    height="auto">
+
+                <VBox class="sapUiSmallMargin">
+
+                    <!-- Row 1 -->
+                    <HBox justifyContent="SpaceBetween">
+
+                        <VBox width="22%">
+
+                            <Label text="Employee ID / Name"/>
+
+                            <Input width="100%"/>
+
+                        </VBox>
+
+                        <VBox width="22%">
+
+                            <Label text="Customer Type"/>
+
+                            <Select
+                                id="customerTypeSelect"
+                                width="100%"
+                                items="{/CustTypes}">
+
+                                <core:Item
+                                    key="{code}"
+                                    text="{name}"/>
+
+                            </Select>
+
+                        </VBox>
+
+                        <VBox width="22%">
+
+                            <Label text="Shopping Mall:"/>
+                           <Text
+                            id="txtShoppingMall"
+                            text=""/>
+                        </VBox>
+
+                        <VBox width="22%">
+
+                            <Label text="GVR Date:"/>
+
+                           <Text
+                            id="txtGvrDate"
+                            text=""/>
+
+                        </VBox>
+
+                    </HBox>
+
+                    <!-- Row 2 -->
+                    <HBox
+                        justifyContent="SpaceBetween"
+                        class="sapUiMediumMarginTop">
+
+                        <VBox width="22%">
+
+                            <Label text="Campaign" required="true"/>
+
+                            <Select
+                                id="campaignSelect"
+                                width="100%"
+                                items="{/MallCampaignSet}">
+
+                                <core:Item
+                                    key="{name}"
+                                    text="{name}"/>
+
+                            </Select>
+
+                        </VBox>
+
+                        <VBox width="22%">
+
+                            <Label text="Customer Mobile" required="true"/>
+
+                            <Input
+                                id="inputCustMobileCreate"
+                                width="100%"
+                                editable="true"
+                                showValueHelp="true"
+                                valueHelpRequest="onCustomerValueHelp"/>
+
+                        </VBox>
+
+                        <VBox width="22%">
+
+                            <Label text=" "/>
+
+                            <Button
+                                id="btnAddBillInfo"
+                                text="Add Customer Bill Info"
+                                enabled="false"
+                                press="onOpenBillInfo"
+                                width="100%"/>
+
+                        </VBox>
+
+                        <VBox width="22%">
+
+                            <Label text=" "/>
+
+                            <Button
+                                id="btnAddCustomerProfile"
+                                text="Add Customer Profile"
+                                press="onOpenCustomerProfile"
+                                width="100%"/>
+
+                        </VBox>
+
+                    </HBox>
+
+                    
+                    <Label text="Comments:"/>
+
+                        <Input
+                            id="inputCreateComments"
+                            width="80%"
+                            placeholder="Enter Comments"/>
+
+                    <!-- Row 3 -->
+
+                    <!-- Total Value -->
+                    <HBox class="sapUiLargeMarginTop">
+
+                        <Title
+                            id="txtTotalValue"
+                            text="Total Assign Items Value : 0"
+                            level="H5"/>
+
+                    </HBox>
+
+                    
+
+                    
+                    
+
+                </VBox>
+
+            </Panel>
+
+            <!-- Gift Items Section -->
+
+            <Panel
+            width="100%"
+            class="sapUiNoContentPadding">
+
+            <headerToolbar>
+
+                <Toolbar>
+
+                    <Title
+                        text="Gift Item Details for Customer Issue"
+                        level="H4"/>
+
+                    <ToolbarSpacer/>
+
+                    <SearchField
+                        id="giftSearch"
+                        width="16rem"
+                        placeholder="Search"
+                        liveChange="onGiftSearch"/>
+
+                </Toolbar>
+
+            </headerToolbar>
+                <Table
+                    id="createGiftTable"
+                    width="100%"
+                    fixedLayout="true"
+                    items="{gift>/GiftVoucherSet}">
+
+                    <columns>
+
+                        <Column width="3rem">
+                            <Text text=""/>
+                        </Column>
+
+                        <Column width="8rem">
+                            <Text text="Material Code"/>
+                        </Column>
+
+                        <Column width="10rem">
+                            <Text text="Material Name"/>
+                        </Column>
+
+                        <Column width="5rem">
+                            <Text text="Stock Qty"/>
+                        </Column>
+
+                        <Column width="6rem">
+                            <Text text="Value"/>
+                        </Column>
+
+                        <Column width="7rem">
+                            <Text text="Issue Qty"/>
+                        </Column>
+
+                        <Column width="10rem">
+                            <Text text="GV Coupon SL No"/>
+                        </Column>
+
+                        <Column width="7rem">
+                            <Text text="Brand"/>
+                        </Column>
+
+                        <Column width="8rem">
+                            <Text text="Expiry Date"/>
+                        </Column>
+
+                    </columns>
+
+                    <items>
+
+                        <ColumnListItem>
+
+                            <cells>
+
+                                <CheckBox
+                                    selected="{gift>selected}"
+                                    select="onSelectionChange"/>
+
+                                <Text text="{gift>material}"/>
+
+                                <Text text="{gift>descr}"/>
+
+                                <Text text="{gift>stock}"/>
+
+                                <Text text="{gift>price}"/>
+
+                                <HBox alignItems="Center">
+
+                                <StepInput
+                                    value="{gift>issueQty}"
+                                    min="1"
+                                    max="{gift>stock}"
+                                    width="6rem"
+                                    change="onQtyChange"
+                                    enabled="{= ${gift>material} !== '1000013157' }"/>
+                                </HBox>
+
+                                <Text text="{gift>coupon}"/>
+
+                                 <Text text="{gift>brand}"/>
+
+
+                                <Text text="{  path:'gift>expDate',
+                                             formatter:'.formatDate'}"/>
+
+                            </cells>
+
+                        </ColumnListItem>
+
+                    </items>
+
+                </Table>
+
+            </Panel>
+
+        </content>
+                <footer>
+
+                    <Toolbar>
+
+                        
+
+                        <ToolbarSpacer/>
+
+                        <Button
+                            text="Submit"
+                            type="Emphasized"
+                            press="onSave"/>
+
+                    </Toolbar>
+
+                </footer>
+
+        
+       
+
+    </Page>
+
+</mvc:View>

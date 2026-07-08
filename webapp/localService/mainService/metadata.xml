@@ -1,0 +1,1269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="GV_trackerService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.Links" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Collection>
+                    <Record>
+                        <PropertyValue Property="rel" String="author"/>
+                        <PropertyValue Property="href" String="https://cap.cloud.sap"/>
+                    </Record>
+                </Collection>
+            </Annotation>
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="CustomerSet" EntityType="GV_trackerService.CustomerSet"/>
+                <EntitySet Name="CountryCodes" EntityType="GV_trackerService.CountryCodes"/>
+                <EntitySet Name="Salutations" EntityType="GV_trackerService.Salutations"/>
+                <EntitySet Name="ShoppingMallSet" EntityType="GV_trackerService.ShoppingMallSet"/>
+                <EntitySet Name="GVHeaderSet" EntityType="GV_trackerService.GVHeaderSet"/>
+                <EntitySet Name="CustTypes" EntityType="GV_trackerService.CustTypes"/>
+                <EntitySet Name="GVRTypes" EntityType="GV_trackerService.GVRTypes"/>
+                <EntitySet Name="MallCampaignSet" EntityType="GV_trackerService.MallCampaignSet"/>
+                <EntitySet Name="BillSet" EntityType="GV_trackerService.BillSet"/>
+                <EntitySet Name="AttachmentSet" EntityType="GV_trackerService.AttachmentSet"/>
+                <EntitySet Name="AssignGiftVoucher" EntityType="GV_trackerService.AssignGiftVoucher"/>
+                <EntitySet Name="GiftVoucherSet" EntityType="GV_trackerService.GiftVoucherSet"/>
+                <EntitySet Name="GiftTypes" EntityType="GV_trackerService.GiftTypes"/>
+                <EntitySet Name="ReturnGiftVoucher" EntityType="GV_trackerService.ReturnGiftVoucher"/>
+                <EntitySet Name="CountryCodes_texts" EntityType="GV_trackerService.CountryCodes_texts"/>
+                <EntitySet Name="Salutations_texts" EntityType="GV_trackerService.Salutations_texts"/>
+                <EntitySet Name="CustTypes_texts" EntityType="GV_trackerService.CustTypes_texts"/>
+                <EntitySet Name="GVRTypes_texts" EntityType="GV_trackerService.GVRTypes_texts"/>
+                <EntitySet Name="GiftTypes_texts" EntityType="GV_trackerService.GiftTypes_texts"/>
+                <AssociationSet Name="CustomerSet_phoneCode" Association="GV_trackerService.CustomerSet_phoneCode">
+                    <End Role="CustomerSet" EntitySet="CustomerSet"/>
+                    <End Role="CountryCodes" EntitySet="CountryCodes"/>
+                </AssociationSet>
+                <AssociationSet Name="CustomerSet_salutation" Association="GV_trackerService.CustomerSet_salutation">
+                    <End Role="CustomerSet" EntitySet="CustomerSet"/>
+                    <End Role="Salutations" EntitySet="Salutations"/>
+                </AssociationSet>
+                <AssociationSet Name="CustomerSet_shoppingMall" Association="GV_trackerService.CustomerSet_shoppingMall">
+                    <End Role="CustomerSet" EntitySet="CustomerSet"/>
+                    <End Role="ShoppingMallSet" EntitySet="ShoppingMallSet"/>
+                </AssociationSet>
+                <AssociationSet Name="CountryCodes_texts_1" Association="GV_trackerService.CountryCodes_texts_1">
+                    <End Role="CountryCodes" EntitySet="CountryCodes"/>
+                    <End Role="CountryCodes_texts" EntitySet="CountryCodes_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="CountryCodes_localized" Association="GV_trackerService.CountryCodes_localized">
+                    <End Role="CountryCodes" EntitySet="CountryCodes"/>
+                    <End Role="CountryCodes_texts" EntitySet="CountryCodes_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="Salutations_texts_1" Association="GV_trackerService.Salutations_texts_1">
+                    <End Role="Salutations" EntitySet="Salutations"/>
+                    <End Role="Salutations_texts" EntitySet="Salutations_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="Salutations_localized" Association="GV_trackerService.Salutations_localized">
+                    <End Role="Salutations" EntitySet="Salutations"/>
+                    <End Role="Salutations_texts" EntitySet="Salutations_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="GVHeaderSet_cust_type" Association="GV_trackerService.GVHeaderSet_cust_type">
+                    <End Role="GVHeaderSet" EntitySet="GVHeaderSet"/>
+                    <End Role="CustTypes" EntitySet="CustTypes"/>
+                </AssociationSet>
+                <AssociationSet Name="GVHeaderSet_shoppingMall" Association="GV_trackerService.GVHeaderSet_shoppingMall">
+                    <End Role="GVHeaderSet" EntitySet="GVHeaderSet"/>
+                    <End Role="ShoppingMallSet" EntitySet="ShoppingMallSet"/>
+                </AssociationSet>
+                <AssociationSet Name="GVHeaderSet_gvr_type" Association="GV_trackerService.GVHeaderSet_gvr_type">
+                    <End Role="GVHeaderSet" EntitySet="GVHeaderSet"/>
+                    <End Role="GVRTypes" EntitySet="GVRTypes"/>
+                </AssociationSet>
+                <AssociationSet Name="GVHeaderSet_campaign" Association="GV_trackerService.GVHeaderSet_campaign">
+                    <End Role="GVHeaderSet" EntitySet="GVHeaderSet"/>
+                    <End Role="MallCampaignSet" EntitySet="MallCampaignSet"/>
+                </AssociationSet>
+                <AssociationSet Name="GVHeaderSet_customer" Association="GV_trackerService.GVHeaderSet_customer">
+                    <End Role="GVHeaderSet" EntitySet="GVHeaderSet"/>
+                    <End Role="CustomerSet" EntitySet="CustomerSet"/>
+                </AssociationSet>
+                <AssociationSet Name="CustTypes_texts_1" Association="GV_trackerService.CustTypes_texts_1">
+                    <End Role="CustTypes" EntitySet="CustTypes"/>
+                    <End Role="CustTypes_texts" EntitySet="CustTypes_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="CustTypes_localized" Association="GV_trackerService.CustTypes_localized">
+                    <End Role="CustTypes" EntitySet="CustTypes"/>
+                    <End Role="CustTypes_texts" EntitySet="CustTypes_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="GVRTypes_texts_1" Association="GV_trackerService.GVRTypes_texts_1">
+                    <End Role="GVRTypes" EntitySet="GVRTypes"/>
+                    <End Role="GVRTypes_texts" EntitySet="GVRTypes_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="GVRTypes_localized" Association="GV_trackerService.GVRTypes_localized">
+                    <End Role="GVRTypes" EntitySet="GVRTypes"/>
+                    <End Role="GVRTypes_texts" EntitySet="GVRTypes_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="BillSet_gvHeader" Association="GV_trackerService.BillSet_gvHeader">
+                    <End Role="BillSet" EntitySet="BillSet"/>
+                    <End Role="GVHeaderSet" EntitySet="GVHeaderSet"/>
+                </AssociationSet>
+                <AssociationSet Name="BillSet_attachment" Association="GV_trackerService.BillSet_attachment">
+                    <End Role="BillSet" EntitySet="BillSet"/>
+                    <End Role="AttachmentSet" EntitySet="AttachmentSet"/>
+                </AssociationSet>
+                <AssociationSet Name="AttachmentSet_bill" Association="GV_trackerService.AttachmentSet_bill">
+                    <End Role="AttachmentSet" EntitySet="AttachmentSet"/>
+                    <End Role="BillSet" EntitySet="BillSet"/>
+                </AssociationSet>
+                <AssociationSet Name="AssignGiftVoucher_gvHeader" Association="GV_trackerService.AssignGiftVoucher_gvHeader">
+                    <End Role="AssignGiftVoucher" EntitySet="AssignGiftVoucher"/>
+                    <End Role="GVHeaderSet" EntitySet="GVHeaderSet"/>
+                </AssociationSet>
+                <AssociationSet Name="AssignGiftVoucher_giftVoucher" Association="GV_trackerService.AssignGiftVoucher_giftVoucher">
+                    <End Role="AssignGiftVoucher" EntitySet="AssignGiftVoucher"/>
+                    <End Role="GiftVoucherSet" EntitySet="GiftVoucherSet"/>
+                </AssociationSet>
+                <AssociationSet Name="GiftVoucherSet_type" Association="GV_trackerService.GiftVoucherSet_type">
+                    <End Role="GiftVoucherSet" EntitySet="GiftVoucherSet"/>
+                    <End Role="GiftTypes" EntitySet="GiftTypes"/>
+                </AssociationSet>
+                <AssociationSet Name="GiftVoucherSet_shoppingMall" Association="GV_trackerService.GiftVoucherSet_shoppingMall">
+                    <End Role="GiftVoucherSet" EntitySet="GiftVoucherSet"/>
+                    <End Role="ShoppingMallSet" EntitySet="ShoppingMallSet"/>
+                </AssociationSet>
+                <AssociationSet Name="GiftTypes_texts_1" Association="GV_trackerService.GiftTypes_texts_1">
+                    <End Role="GiftTypes" EntitySet="GiftTypes"/>
+                    <End Role="GiftTypes_texts" EntitySet="GiftTypes_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="GiftTypes_localized" Association="GV_trackerService.GiftTypes_localized">
+                    <End Role="GiftTypes" EntitySet="GiftTypes"/>
+                    <End Role="GiftTypes_texts" EntitySet="GiftTypes_texts"/>
+                </AssociationSet>
+                <AssociationSet Name="ReturnGiftVoucher_gvHeader" Association="GV_trackerService.ReturnGiftVoucher_gvHeader">
+                    <End Role="ReturnGiftVoucher" EntitySet="ReturnGiftVoucher"/>
+                    <End Role="GVHeaderSet" EntitySet="GVHeaderSet"/>
+                </AssociationSet>
+                <AssociationSet Name="ReturnGiftVoucher_returnedGVHeader" Association="GV_trackerService.ReturnGiftVoucher_returnedGVHeader">
+                    <End Role="ReturnGiftVoucher" EntitySet="ReturnGiftVoucher"/>
+                    <End Role="GVHeaderSet" EntitySet="GVHeaderSet"/>
+                </AssociationSet>
+                <AssociationSet Name="ReturnGiftVoucher_RT_Ass_GiftVoucher" Association="GV_trackerService.ReturnGiftVoucher_RT_Ass_GiftVoucher">
+                    <End Role="ReturnGiftVoucher" EntitySet="ReturnGiftVoucher"/>
+                    <End Role="AssignGiftVoucher" EntitySet="AssignGiftVoucher"/>
+                </AssociationSet>
+                <AssociationSet Name="ReturnGiftVoucher_giftVoucher" Association="GV_trackerService.ReturnGiftVoucher_giftVoucher">
+                    <End Role="ReturnGiftVoucher" EntitySet="ReturnGiftVoucher"/>
+                    <End Role="GiftVoucherSet" EntitySet="GiftVoucherSet"/>
+                </AssociationSet>
+            </EntityContainer>
+            <EntityType Name="CustomerSet">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="email" Type="Edm.String" MaxLength="100"/>
+                <Property Name="name" Type="Edm.String" MaxLength="100"/>
+                <Property Name="phone" Type="Edm.Int64"/>
+                <NavigationProperty Name="phoneCode" Relationship="GV_trackerService.CustomerSet_phoneCode" FromRole="CustomerSet" ToRole="CountryCodes"/>
+                <Property Name="phoneCode_code" Type="Edm.Int32"/>
+                <NavigationProperty Name="salutation" Relationship="GV_trackerService.CustomerSet_salutation" FromRole="CustomerSet" ToRole="Salutations"/>
+                <Property Name="salutation_code" Type="Edm.String" MaxLength="4"/>
+                <NavigationProperty Name="shoppingMall" Relationship="GV_trackerService.CustomerSet_shoppingMall" FromRole="CustomerSet" ToRole="ShoppingMallSet"/>
+                <Property Name="shoppingMall_plant_code" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="CountryCodes">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.Int32" Nullable="false"/>
+                <NavigationProperty Name="texts" Relationship="GV_trackerService.CountryCodes_texts_1" FromRole="CountryCodes" ToRole="CountryCodes_texts"/>
+                <NavigationProperty Name="localized" Relationship="GV_trackerService.CountryCodes_localized" FromRole="CountryCodes" ToRole="CountryCodes_texts"/>
+            </EntityType>
+            <EntityType Name="Salutations">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <NavigationProperty Name="texts" Relationship="GV_trackerService.Salutations_texts_1" FromRole="Salutations" ToRole="Salutations_texts"/>
+                <NavigationProperty Name="localized" Relationship="GV_trackerService.Salutations_localized" FromRole="Salutations" ToRole="Salutations_texts"/>
+            </EntityType>
+            <EntityType Name="ShoppingMallSet">
+                <Key>
+                    <PropertyRef Name="plant_code"/>
+                </Key>
+                <Property Name="plant_code" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="plant_name" Type="Edm.String" MaxLength="100"/>
+                <NavigationProperty Name="customers" Relationship="GV_trackerService.CustomerSet_shoppingMall" FromRole="ShoppingMallSet" ToRole="CustomerSet"/>
+            </EntityType>
+            <EntityType Name="GVHeaderSet">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="gv_no" Type="Edm.Int64"/>
+                <Property Name="assignGiftsTotal_amt" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="returnGiftsTotal_amt" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="comment" Type="Edm.String" MaxLength="200"/>
+                <NavigationProperty Name="cust_type" Relationship="GV_trackerService.GVHeaderSet_cust_type" FromRole="GVHeaderSet" ToRole="CustTypes"/>
+                <Property Name="cust_type_code" Type="Edm.String" MaxLength="20"/>
+                <NavigationProperty Name="shoppingMall" Relationship="GV_trackerService.GVHeaderSet_shoppingMall" FromRole="GVHeaderSet" ToRole="ShoppingMallSet"/>
+                <Property Name="shoppingMall_plant_code" Type="Edm.Int32"/>
+                <NavigationProperty Name="gvr_type" Relationship="GV_trackerService.GVHeaderSet_gvr_type" FromRole="GVHeaderSet" ToRole="GVRTypes"/>
+                <Property Name="gvr_type_code" Type="Edm.String" MaxLength="2"/>
+                <NavigationProperty Name="campaign" Relationship="GV_trackerService.GVHeaderSet_campaign" FromRole="GVHeaderSet" ToRole="MallCampaignSet"/>
+                <Property Name="campaign_name" Type="Edm.String" MaxLength="100"/>
+                <NavigationProperty Name="customer" Relationship="GV_trackerService.GVHeaderSet_customer" FromRole="GVHeaderSet" ToRole="CustomerSet"/>
+                <Property Name="customer_ID" Type="Edm.Guid"/>
+                <Property Name="employee_code" Type="Edm.Int64"/>
+                <NavigationProperty Name="bills" Relationship="GV_trackerService.BillSet_gvHeader" FromRole="GVHeaderSet" ToRole="BillSet"/>
+                <NavigationProperty Name="assignGiftVouchers" Relationship="GV_trackerService.AssignGiftVoucher_gvHeader" FromRole="GVHeaderSet" ToRole="AssignGiftVoucher"/>
+                <NavigationProperty Name="returnGiftVouchers" Relationship="GV_trackerService.ReturnGiftVoucher_gvHeader" FromRole="GVHeaderSet" ToRole="ReturnGiftVoucher"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset"/>
+            </EntityType>
+            <EntityType Name="CustTypes">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <NavigationProperty Name="texts" Relationship="GV_trackerService.CustTypes_texts_1" FromRole="CustTypes" ToRole="CustTypes_texts"/>
+                <NavigationProperty Name="localized" Relationship="GV_trackerService.CustTypes_localized" FromRole="CustTypes" ToRole="CustTypes_texts"/>
+            </EntityType>
+            <EntityType Name="GVRTypes">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <NavigationProperty Name="texts" Relationship="GV_trackerService.GVRTypes_texts_1" FromRole="GVRTypes" ToRole="GVRTypes_texts"/>
+                <NavigationProperty Name="localized" Relationship="GV_trackerService.GVRTypes_localized" FromRole="GVRTypes" ToRole="GVRTypes_texts"/>
+            </EntityType>
+            <EntityType Name="MallCampaignSet">
+                <Key>
+                    <PropertyRef Name="name"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="100" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="BillSet">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="sr_no" Type="Edm.Int32"/>
+                <Property Name="b_no" Type="Edm.String" MaxLength="100"/>
+                <Property Name="b_amount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <NavigationProperty Name="gvHeader" Relationship="GV_trackerService.BillSet_gvHeader" FromRole="BillSet" ToRole="GVHeaderSet"/>
+                <Property Name="gvHeader_ID" Type="Edm.Guid"/>
+                <NavigationProperty Name="attachment" Relationship="GV_trackerService.BillSet_attachment" FromRole="BillSet" ToRole="AttachmentSet"/>
+                <Property Name="attachment_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="AttachmentSet" m:HasStream="true">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="contentType" Type="Edm.String"/>
+                <Property Name="fileName" Type="Edm.String"/>
+                <NavigationProperty Name="bill" Relationship="GV_trackerService.AttachmentSet_bill" FromRole="AttachmentSet" ToRole="BillSet"/>
+                <Property Name="bill_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="AssignGiftVoucher">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="issue_quantity" Type="Edm.Int32"/>
+                <Property Name="current_quantity" Type="Edm.Int32"/>
+                <Property Name="total_amount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <NavigationProperty Name="gvHeader" Relationship="GV_trackerService.AssignGiftVoucher_gvHeader" FromRole="AssignGiftVoucher" ToRole="GVHeaderSet"/>
+                <Property Name="gvHeader_ID" Type="Edm.Guid"/>
+                <NavigationProperty Name="giftVoucher" Relationship="GV_trackerService.AssignGiftVoucher_giftVoucher" FromRole="AssignGiftVoucher" ToRole="GiftVoucherSet"/>
+                <Property Name="giftVoucher_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="GiftVoucherSet">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="coupon" Type="Edm.String" MaxLength="14"/>
+                <Property Name="material" Type="Edm.Int64"/>
+                <Property Name="storageLoc" Type="Edm.String" MaxLength="4"/>
+                <Property Name="stock" Type="Edm.Int32"/>
+                <Property Name="batch" Type="Edm.Int64"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="100"/>
+                <Property Name="price" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <Property Name="brand" Type="Edm.String" MaxLength="100"/>
+                <Property Name="expDate" Type="Edm.DateTime" sap:display-format="Date"/>
+                <NavigationProperty Name="type" Relationship="GV_trackerService.GiftVoucherSet_type" FromRole="GiftVoucherSet" ToRole="GiftTypes"/>
+                <Property Name="type_code" Type="Edm.String" MaxLength="2"/>
+                <NavigationProperty Name="shoppingMall" Relationship="GV_trackerService.GiftVoucherSet_shoppingMall" FromRole="GiftVoucherSet" ToRole="ShoppingMallSet"/>
+                <Property Name="shoppingMall_plant_code" Type="Edm.Int32"/>
+                <NavigationProperty Name="assignGiftVouchers" Relationship="GV_trackerService.AssignGiftVoucher_giftVoucher" FromRole="GiftVoucherSet" ToRole="AssignGiftVoucher"/>
+                <NavigationProperty Name="returnGiftVouchers" Relationship="GV_trackerService.ReturnGiftVoucher_giftVoucher" FromRole="GiftVoucherSet" ToRole="ReturnGiftVoucher"/>
+            </EntityType>
+            <EntityType Name="GiftTypes">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <NavigationProperty Name="texts" Relationship="GV_trackerService.GiftTypes_texts_1" FromRole="GiftTypes" ToRole="GiftTypes_texts"/>
+                <NavigationProperty Name="localized" Relationship="GV_trackerService.GiftTypes_localized" FromRole="GiftTypes" ToRole="GiftTypes_texts"/>
+            </EntityType>
+            <EntityType Name="ReturnGiftVoucher">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="issue_quantity" Type="Edm.Int32"/>
+                <Property Name="total_amount" Type="Edm.Decimal" Precision="15" Scale="2"/>
+                <NavigationProperty Name="gvHeader" Relationship="GV_trackerService.ReturnGiftVoucher_gvHeader" FromRole="ReturnGiftVoucher" ToRole="GVHeaderSet"/>
+                <Property Name="gvHeader_ID" Type="Edm.Guid"/>
+                <NavigationProperty Name="returnedGVHeader" Relationship="GV_trackerService.ReturnGiftVoucher_returnedGVHeader" FromRole="ReturnGiftVoucher" ToRole="GVHeaderSet"/>
+                <Property Name="returnedGVHeader_ID" Type="Edm.Guid"/>
+                <NavigationProperty Name="RT_Ass_GiftVoucher" Relationship="GV_trackerService.ReturnGiftVoucher_RT_Ass_GiftVoucher" FromRole="ReturnGiftVoucher" ToRole="AssignGiftVoucher"/>
+                <Property Name="RT_Ass_GiftVoucher_ID" Type="Edm.Guid"/>
+                <NavigationProperty Name="giftVoucher" Relationship="GV_trackerService.ReturnGiftVoucher_giftVoucher" FromRole="ReturnGiftVoucher" ToRole="GiftVoucherSet"/>
+                <Property Name="giftVoucher_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="CountryCodes_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.Int32" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="Salutations_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="4" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="CustTypes_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="20" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="GVRTypes_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="2" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="GiftTypes_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="2" Nullable="false"/>
+            </EntityType>
+            <Association Name="CustomerSet_phoneCode">
+                <End Role="CustomerSet" Type="GV_trackerService.CustomerSet" Multiplicity="*"/>
+                <End Role="CountryCodes" Type="GV_trackerService.CountryCodes" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="CountryCodes">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="CustomerSet">
+                        <PropertyRef Name="phoneCode_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CustomerSet_salutation">
+                <End Role="CustomerSet" Type="GV_trackerService.CustomerSet" Multiplicity="*"/>
+                <End Role="Salutations" Type="GV_trackerService.Salutations" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="Salutations">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="CustomerSet">
+                        <PropertyRef Name="salutation_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CustomerSet_shoppingMall">
+                <End Role="CustomerSet" Type="GV_trackerService.CustomerSet" Multiplicity="*"/>
+                <End Role="ShoppingMallSet" Type="GV_trackerService.ShoppingMallSet" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ShoppingMallSet">
+                        <PropertyRef Name="plant_code"/>
+                    </Principal>
+                    <Dependent Role="CustomerSet">
+                        <PropertyRef Name="shoppingMall_plant_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CountryCodes_texts_1">
+                <End Role="CountryCodes" Type="GV_trackerService.CountryCodes" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="CountryCodes_texts" Type="GV_trackerService.CountryCodes_texts" Multiplicity="*"/>
+            </Association>
+            <Association Name="CountryCodes_localized">
+                <End Role="CountryCodes" Type="GV_trackerService.CountryCodes" Multiplicity="*"/>
+                <End Role="CountryCodes_texts" Type="GV_trackerService.CountryCodes_texts" Multiplicity="0..1"/>
+            </Association>
+            <Association Name="Salutations_texts_1">
+                <End Role="Salutations" Type="GV_trackerService.Salutations" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="Salutations_texts" Type="GV_trackerService.Salutations_texts" Multiplicity="*"/>
+            </Association>
+            <Association Name="Salutations_localized">
+                <End Role="Salutations" Type="GV_trackerService.Salutations" Multiplicity="*"/>
+                <End Role="Salutations_texts" Type="GV_trackerService.Salutations_texts" Multiplicity="0..1"/>
+            </Association>
+            <Association Name="GVHeaderSet_cust_type">
+                <End Role="GVHeaderSet" Type="GV_trackerService.GVHeaderSet" Multiplicity="*"/>
+                <End Role="CustTypes" Type="GV_trackerService.CustTypes" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="CustTypes">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="GVHeaderSet">
+                        <PropertyRef Name="cust_type_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GVHeaderSet_shoppingMall">
+                <End Role="GVHeaderSet" Type="GV_trackerService.GVHeaderSet" Multiplicity="*"/>
+                <End Role="ShoppingMallSet" Type="GV_trackerService.ShoppingMallSet" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ShoppingMallSet">
+                        <PropertyRef Name="plant_code"/>
+                    </Principal>
+                    <Dependent Role="GVHeaderSet">
+                        <PropertyRef Name="shoppingMall_plant_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GVHeaderSet_gvr_type">
+                <End Role="GVHeaderSet" Type="GV_trackerService.GVHeaderSet" Multiplicity="*"/>
+                <End Role="GVRTypes" Type="GV_trackerService.GVRTypes" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="GVRTypes">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="GVHeaderSet">
+                        <PropertyRef Name="gvr_type_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GVHeaderSet_campaign">
+                <End Role="GVHeaderSet" Type="GV_trackerService.GVHeaderSet" Multiplicity="*"/>
+                <End Role="MallCampaignSet" Type="GV_trackerService.MallCampaignSet" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="MallCampaignSet">
+                        <PropertyRef Name="name"/>
+                    </Principal>
+                    <Dependent Role="GVHeaderSet">
+                        <PropertyRef Name="campaign_name"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GVHeaderSet_customer">
+                <End Role="GVHeaderSet" Type="GV_trackerService.GVHeaderSet" Multiplicity="*"/>
+                <End Role="CustomerSet" Type="GV_trackerService.CustomerSet" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="CustomerSet">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="GVHeaderSet">
+                        <PropertyRef Name="customer_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CustTypes_texts_1">
+                <End Role="CustTypes" Type="GV_trackerService.CustTypes" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="CustTypes_texts" Type="GV_trackerService.CustTypes_texts" Multiplicity="*"/>
+            </Association>
+            <Association Name="CustTypes_localized">
+                <End Role="CustTypes" Type="GV_trackerService.CustTypes" Multiplicity="*"/>
+                <End Role="CustTypes_texts" Type="GV_trackerService.CustTypes_texts" Multiplicity="0..1"/>
+            </Association>
+            <Association Name="GVRTypes_texts_1">
+                <End Role="GVRTypes" Type="GV_trackerService.GVRTypes" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="GVRTypes_texts" Type="GV_trackerService.GVRTypes_texts" Multiplicity="*"/>
+            </Association>
+            <Association Name="GVRTypes_localized">
+                <End Role="GVRTypes" Type="GV_trackerService.GVRTypes" Multiplicity="*"/>
+                <End Role="GVRTypes_texts" Type="GV_trackerService.GVRTypes_texts" Multiplicity="0..1"/>
+            </Association>
+            <Association Name="BillSet_gvHeader">
+                <End Role="BillSet" Type="GV_trackerService.BillSet" Multiplicity="*"/>
+                <End Role="GVHeaderSet" Type="GV_trackerService.GVHeaderSet" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="GVHeaderSet">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="BillSet">
+                        <PropertyRef Name="gvHeader_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="BillSet_attachment">
+                <End Role="BillSet" Type="GV_trackerService.BillSet" Multiplicity="*"/>
+                <End Role="AttachmentSet" Type="GV_trackerService.AttachmentSet" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="AttachmentSet">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="BillSet">
+                        <PropertyRef Name="attachment_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AttachmentSet_bill">
+                <End Role="AttachmentSet" Type="GV_trackerService.AttachmentSet" Multiplicity="*"/>
+                <End Role="BillSet" Type="GV_trackerService.BillSet" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="BillSet">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="AttachmentSet">
+                        <PropertyRef Name="bill_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AssignGiftVoucher_gvHeader">
+                <End Role="AssignGiftVoucher" Type="GV_trackerService.AssignGiftVoucher" Multiplicity="*"/>
+                <End Role="GVHeaderSet" Type="GV_trackerService.GVHeaderSet" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="GVHeaderSet">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="AssignGiftVoucher">
+                        <PropertyRef Name="gvHeader_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="AssignGiftVoucher_giftVoucher">
+                <End Role="AssignGiftVoucher" Type="GV_trackerService.AssignGiftVoucher" Multiplicity="*"/>
+                <End Role="GiftVoucherSet" Type="GV_trackerService.GiftVoucherSet" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="GiftVoucherSet">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="AssignGiftVoucher">
+                        <PropertyRef Name="giftVoucher_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GiftVoucherSet_type">
+                <End Role="GiftVoucherSet" Type="GV_trackerService.GiftVoucherSet" Multiplicity="*"/>
+                <End Role="GiftTypes" Type="GV_trackerService.GiftTypes" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="GiftTypes">
+                        <PropertyRef Name="code"/>
+                    </Principal>
+                    <Dependent Role="GiftVoucherSet">
+                        <PropertyRef Name="type_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GiftVoucherSet_shoppingMall">
+                <End Role="GiftVoucherSet" Type="GV_trackerService.GiftVoucherSet" Multiplicity="*"/>
+                <End Role="ShoppingMallSet" Type="GV_trackerService.ShoppingMallSet" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="ShoppingMallSet">
+                        <PropertyRef Name="plant_code"/>
+                    </Principal>
+                    <Dependent Role="GiftVoucherSet">
+                        <PropertyRef Name="shoppingMall_plant_code"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="GiftTypes_texts_1">
+                <End Role="GiftTypes" Type="GV_trackerService.GiftTypes" Multiplicity="1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Role="GiftTypes_texts" Type="GV_trackerService.GiftTypes_texts" Multiplicity="*"/>
+            </Association>
+            <Association Name="GiftTypes_localized">
+                <End Role="GiftTypes" Type="GV_trackerService.GiftTypes" Multiplicity="*"/>
+                <End Role="GiftTypes_texts" Type="GV_trackerService.GiftTypes_texts" Multiplicity="0..1"/>
+            </Association>
+            <Association Name="ReturnGiftVoucher_gvHeader">
+                <End Role="ReturnGiftVoucher" Type="GV_trackerService.ReturnGiftVoucher" Multiplicity="*"/>
+                <End Role="GVHeaderSet" Type="GV_trackerService.GVHeaderSet" Multiplicity="0..1">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <ReferentialConstraint>
+                    <Principal Role="GVHeaderSet">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ReturnGiftVoucher">
+                        <PropertyRef Name="gvHeader_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ReturnGiftVoucher_returnedGVHeader">
+                <End Role="ReturnGiftVoucher" Type="GV_trackerService.ReturnGiftVoucher" Multiplicity="*"/>
+                <End Role="GVHeaderSet" Type="GV_trackerService.GVHeaderSet" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="GVHeaderSet">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ReturnGiftVoucher">
+                        <PropertyRef Name="returnedGVHeader_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ReturnGiftVoucher_RT_Ass_GiftVoucher">
+                <End Role="ReturnGiftVoucher" Type="GV_trackerService.ReturnGiftVoucher" Multiplicity="*"/>
+                <End Role="AssignGiftVoucher" Type="GV_trackerService.AssignGiftVoucher" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="AssignGiftVoucher">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ReturnGiftVoucher">
+                        <PropertyRef Name="RT_Ass_GiftVoucher_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ReturnGiftVoucher_giftVoucher">
+                <End Role="ReturnGiftVoucher" Type="GV_trackerService.ReturnGiftVoucher" Multiplicity="*"/>
+                <End Role="GiftVoucherSet" Type="GV_trackerService.GiftVoucherSet" Multiplicity="0..1"/>
+                <ReferentialConstraint>
+                    <Principal Role="GiftVoucherSet">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ReturnGiftVoucher">
+                        <PropertyRef Name="giftVoucher_ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Annotations Target="GV_trackerService.EntityContainer/CustomerSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustomerSet/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustomerSet/email" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.Pattern" String="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"/>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustomerSet/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustomerSet/phone" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.Pattern" String="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"/>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustomerSet/phoneCode_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="CountryCodes"/>
+                        <PropertyValue Property="CollectionPath" String="CountryCodes"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="phoneCode_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustomerSet/salutation_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="Salutations"/>
+                        <PropertyValue Property="CollectionPath" String="Salutations"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="salutation_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustomerSet/shoppingMall_plant_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CountryCodes" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CountryCodes/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CountryCodes/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.Salutations" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.Salutations/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.Salutations/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.Salutations/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="MR"/>
+                            <PropertyValue Property="Value" String="Mr"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="MRS"/>
+                            <PropertyValue Property="Value" String="Mrs"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="MISS"/>
+                            <PropertyValue Property="Value" String="Miss"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="MAST"/>
+                            <PropertyValue Property="Value" String="Mast"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.EntityContainer/ShoppingMallSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.ShoppingMallSet/plant_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.ShoppingMallSet/plant_name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.EntityContainer/GVHeaderSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVHeaderSet/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVHeaderSet/gv_no" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVHeaderSet/cust_type_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="CustTypes"/>
+                        <PropertyValue Property="CollectionPath" String="CustTypes"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="cust_type_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVHeaderSet/gvr_type_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="GVRTypes"/>
+                        <PropertyValue Property="CollectionPath" String="GVRTypes"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="gvr_type_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVHeaderSet/customer_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVHeaderSet/employee_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVHeaderSet/createdAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustTypes" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustTypes/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustTypes/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustTypes/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="MALL"/>
+                            <PropertyValue Property="Value" String="Mall Customer"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="INT"/>
+                            <PropertyValue Property="Value" String="Internal Employee"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="EXT"/>
+                            <PropertyValue Property="Value" String="Contract Employee"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVRTypes" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVRTypes/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVRTypes/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVRTypes/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="CI"/>
+                            <PropertyValue Property="Value" String="CI"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="RP"/>
+                            <PropertyValue Property="Value" String="RP"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="RT"/>
+                            <PropertyValue Property="Value" String="RT"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.EntityContainer/MallCampaignSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.EntityContainer/BillSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.BillSet/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.BillSet/sr_no" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.BillSet/b_no" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.BillSet/b_amount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.BillSet/attachment_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.AttachmentSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.MediaType" Path="contentType"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.EntityContainer/AttachmentSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.AttachmentSet/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.AttachmentSet/contentType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.IsMediaType" Bool="true"/>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.AttachmentSet/fileName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.AssignGiftVoucher/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.AssignGiftVoucher/issue_quantity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.AssignGiftVoucher/total_amount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.AssignGiftVoucher/giftVoucher_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.EntityContainer/GiftVoucherSet" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftVoucherSet/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftVoucherSet/coupon" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftVoucherSet/material" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftVoucherSet/storageLoc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftVoucherSet/stock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftVoucherSet/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftVoucherSet/price" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftVoucherSet/brand" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftVoucherSet/type_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="Label" String="GiftTypes"/>
+                        <PropertyValue Property="CollectionPath" String="GiftTypes"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="type_code"/>
+                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftVoucherSet/shoppingMall_plant_code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftTypes" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftTypes/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftTypes/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftTypes/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="GF"/>
+                            <PropertyValue Property="Value" String="GF"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="GV"/>
+                            <PropertyValue Property="Value" String="GV"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.ReturnGiftVoucher/ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.ReturnGiftVoucher/issue_quantity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.ReturnGiftVoucher/total_amount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.ReturnGiftVoucher/returnedGVHeader_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.ReturnGiftVoucher/RT_Ass_GiftVoucher_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.ReturnGiftVoucher/giftVoucher_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CountryCodes_texts/locale" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Language Code"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CountryCodes_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CountryCodes_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.Salutations_texts/locale" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Language Code"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.Salutations_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.Salutations_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.Salutations_texts/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="MR"/>
+                            <PropertyValue Property="Value" String="Mr"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="MRS"/>
+                            <PropertyValue Property="Value" String="Mrs"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="MISS"/>
+                            <PropertyValue Property="Value" String="Miss"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="MAST"/>
+                            <PropertyValue Property="Value" String="Mast"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustTypes_texts/locale" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Language Code"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustTypes_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustTypes_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.CustTypes_texts/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="MALL"/>
+                            <PropertyValue Property="Value" String="Mall Customer"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="INT"/>
+                            <PropertyValue Property="Value" String="Internal Employee"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="EXT"/>
+                            <PropertyValue Property="Value" String="Contract Employee"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVRTypes_texts/locale" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Language Code"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVRTypes_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVRTypes_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GVRTypes_texts/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="CI"/>
+                            <PropertyValue Property="Value" String="CI"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="RP"/>
+                            <PropertyValue Property="Value" String="RP"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="RT"/>
+                            <PropertyValue Property="Value" String="RT"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftTypes_texts/locale" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Language Code"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftTypes_texts/name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Name"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftTypes_texts/descr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Description"/>
+            </Annotations>
+            <Annotations Target="GV_trackerService.GiftTypes_texts/code" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Validation.AllowedValues">
+                    <Collection>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="GF"/>
+                            <PropertyValue Property="Value" String="GF"/>
+                        </Record>
+                        <Record Type="Validation.AllowedValue">
+                            <Annotation Term="Core.SymbolicName" String="GV"/>
+                            <PropertyValue Property="Value" String="GV"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

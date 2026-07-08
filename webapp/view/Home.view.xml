@@ -1,0 +1,79 @@
+<mvc:View
+    controllerName="gvtracker.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        title="Gift Voucher Tracker - Customer Gift Issue Selection Screen">
+
+        
+        <content>
+
+           <VBox
+            width="100%"
+            alignItems="Center"
+            class="sapUiLargeMarginTop">
+
+            <VBox width="22rem">
+
+                <HBox
+                    alignItems="Center"
+                    class="sapUiMediumMarginBottom">
+
+                    <Label
+                        id="lblGVR"
+                        text="GVR Number"
+                        width="8rem"
+                        class="sapUiSmallMMarginEnd"/>
+                       
+
+                    <Input
+                        id="inputGVR"
+                        width="10rem"
+                       class="sapUiSmallMarginEnd"
+                        showValueHelp="false"                        
+                        valueHelpRequest="onValueHelpRequest"
+                        editable="false"/>
+
+                    <Button
+                        text="EXECUTE"
+                        press="onExecute"/>
+
+                </HBox>
+
+                <RadioButton
+                    id="rbCreate"
+                    text="CREATE"
+                    groupName="mode"
+                    selected="true"
+                    select="onModeChange"/>
+
+                  <RadioButton
+                    id="rbReturn"
+                    text="RETURN"
+                    groupName="mode"
+                    selected="true"
+                    select="onModeChange"/>
+
+                <RadioButton
+                    id="rbReplacement"
+                    text="REPLACEMENT"
+                    groupName="mode"
+                    selected="true"
+                    select="onModeChange"/>
+                   
+
+                <RadioButton
+                    id="rbDisplay"
+                    text="DISPLAY"
+                    groupName="mode"
+                    select="onModeChange"/>
+
+            </VBox>
+
+        </VBox>
+        </content>
+
+    </Page>
+
+</mvc:View>

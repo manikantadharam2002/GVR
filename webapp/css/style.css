@@ -1,0 +1,9 @@
+.uploadSuccess .sapMBtnInner {
+    background-color: #107e3e !important;
+    border-color: #107e3e !important;
+    color: white !important;
+}
+
+.uploadSuccess .sapMBtnIcon {
+    color: white !important;
+}

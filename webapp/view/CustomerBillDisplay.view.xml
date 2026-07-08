@@ -1,0 +1,125 @@
+
+<mvc:View
+    controllerName="gvtracker.controller.CustomerBillDisplay"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page showHeader="false">
+
+        <content>
+
+            <Toolbar>
+                <Title text="Gift Voucher Tracker - Customer Purchase Bill Details - DISPLAY"/>
+                <ToolbarSpacer/>
+                <Button
+                    text="CLOSE"
+                    press="onClose"/>
+            </Toolbar>
+
+            <VBox class="sapUiMediumMargin">
+
+                <VBox class="sapUiMediumMargin">
+
+                <HBox class="sapUiSmallMarginBottom" alignItems="Center">
+                    <Label text="GVR Number" width="12rem"/>
+                    <Input 
+                    id="inputGvrNo"
+                    width="12rem"
+                    editable="false"/>
+                </HBox>
+
+                <HBox class="sapUiSmallMarginBottom" alignItems="Center">
+                    <Label text="Customer Mobile" width="12rem"/>
+                    <Input 
+                    id="inputCustomerMobile"
+                    width="12rem"
+                     editable="false"/>
+                </HBox>
+
+                <HBox class="sapUiSmallMarginBottom"  alignItems="Center">
+                    <Label text="Total Customer Bill" width="12rem"/>
+                    <Input id="inputTotalBill"  width="12rem" editable="false"/>
+                </HBox>
+
+            </VBox>
+
+                <Title
+                    text="Customer Purchase Bill Details"
+                    level="H4"
+                    class="sapUiMediumMarginTop"/>
+
+                <Table 
+                id="customerbillTable"
+                inset="false"
+                items="{billModel>/items}">
+
+                    <columns>
+                        <Column>
+                            <Text text="{Sl.No}"/>
+                        </Column>
+
+                        <Column>
+                            <Text text="{Bill No}"/>
+                        </Column>
+
+                        <Column>
+                            <Text text="{Bill Value}"/>
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{billModel>sr_no}"/>
+                                <Text text="{billModel>b_no}"/>
+                                <Text text="{billModel>b_amount}"/>
+                            </cells>
+                        </ColumnListItem>
+
+                    </items>
+
+                </Table>
+                <VBox class="sapUiLargeMarginTop">
+
+                    <Title
+                        text="Attachments"
+                        level="H4"/>
+
+                    <FlexBox
+                        wrap="Wrap"
+                        justifyContent="Center"
+                        alignItems="Center"
+                        items="{billModel>/items}">
+
+                        <items>
+
+                            <VBox
+                                alignItems="Center"
+                                class="sapUiMediumMargin">
+
+                                <Image
+                                    src="{billModel>attachmentUrl}"
+                                    width="200px"
+                                    height="150px"
+                                    press="onOpenAttachment"
+                                    decorative="false"/>
+
+                                <Link
+                                    text="{billModel>fileName}"
+                                    press="onOpenAttachment"/>
+
+                            </VBox>
+
+                        </items>
+
+                    </FlexBox>
+
+                </VBox>
+
+            </VBox>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

@@ -1,0 +1,195 @@
+<mvc:View
+    controllerName="gvtracker.controller.BillInfo"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+     xmlns:unified="sap.ui.unified">
+
+    <Page showHeader="false" >
+
+        <content>
+
+            <!-- Header -->
+            <Toolbar>
+                <Title text="Gift Voucher Tracker - Customer Purchase Bill Details - CREATE Screen"/>
+                <ToolbarSpacer/>
+                <Button
+                    text="CLOSE"
+                    press="onClose"/>
+            </Toolbar>
+
+            <VBox class="sapUiSmallMargin">
+
+                <!-- Customer Details -->
+                <HBox class="sapUiSmallMarginBottom">
+
+                    <VBox width="30rem">
+
+                        <HBox class="sapUiSmallMarginBottom"
+                                alignItems="Center">
+                            <Label
+                        
+                                text="Customer Mobile"
+                                width="12rem"/>
+                            <Input
+                                id="inputBillCustomerMobile"
+                                width="14rem"
+                                editable="false"/>
+                        </HBox>
+
+                        <HBox alignItems="Center">
+                            <Label
+                                text="Total Customer Bill"
+                                width="12rem"/>
+                            <Input
+                                id="inputTotalCustomerBill"
+                                width="14rem"
+                                editable="false"/>
+                        </HBox>
+
+                    </VBox>
+
+                </HBox>
+
+                <!-- Bill Table -->
+                <HBox 
+                    width="100%"
+                    justifyContent="SpaceBetween"
+                    alignItems="Center"
+                    class="sapTinyMarginBottom">
+                <Title
+                    text="Customer Purchase Bill Details"
+                    level="H4"
+                    />
+                    <HBox>
+                        <Button
+                            icon="sap-icon://add"
+                            tooltip="Add Row"
+                            press="onAddRow"
+                            class="sapUiTinyMarginEnd"/>
+
+                        <Button
+                            icon="sap-icon://delete"
+                            tooltip="Delete Row"
+                            press="onDeleteRow"
+                            class="sapUiMediumMarginEnd"/>
+
+                    </HBox>
+
+                
+
+                </HBox>
+                    <Table
+                        id="billTable"
+                        mode="MultiSelect"
+                        items="{bill>/bills}">
+
+                        <columns>
+
+                            <Column>
+                                <Text text="Sl.No"/>
+                            </Column>
+
+                            <Column>
+                                <Text text="Bill No"/>
+                            </Column>
+
+                            <Column>
+                                <Text text="Bill Value"/>
+                            </Column>
+
+                            <Column>
+                                <Text text="Take Photo"/>
+                            </Column>
+
+                            <Column>
+                                <Text text="Upload Photo"/>
+
+                            </Column>
+
+                            <Column>
+                                <Text text="Preview"/>
+                            </Column>
+
+                        </columns>
+
+                        
+
+                        <items>
+                            <ColumnListItem>
+
+                                <cells>
+
+                                    <Text text="{bill>slNo}"/>
+
+                                    <Input value="{bill>billNo}"/>
+
+                                    <Input
+                                        value="{bill>billValue}"
+                                        liveChange="onBillValueChange"/>
+
+                                            <Button
+                                                text="{= ${bill>imageSource} === 'Camera' ? '✔ Camera' : 'Camera'}"
+                                                    press="onCameraPress"
+                                                    type="{= ${bill>imageSource} === 'Camera' ? 'Accept' : 'Default'}"/>
+
+                                    <HBox justifyContent="Center">
+
+                                       <unified:FileUploader
+                                            buttonOnly="true"
+                                            buttonText="{= ${bill>imageSource} === 'Browse' ? '✔ Upload File' : 'Upload File'}"
+                                            change="onFileUpload"
+                                            sameFilenameAllowed="true"
+                                            class="billUploader"
+                                            fileType="jpg,jpeg,png,pdf,doc,docx"
+                                            mimeType="image/jpeg,image/png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+
+                                    </HBox>
+
+                                        <!-- Preview Column -->
+                                    <VBox>
+
+                                        <!-- Image Preview -->
+                                        <Image
+                                            src="{bill>image}"
+                                            width="80px"
+                                            height="60px"
+                                            visible="{= !!${bill>image} }"
+                                            press="onPreviewImage"
+                                            decorative="false"/>
+
+                                        <!-- PDF / Document Preview -->
+                                        <Link
+                                            text="📄 Open File"
+                                            visible="{= ${bill>fileType} === 'pdf' || ${bill>fileType} === 'doc' || ${bill>fileType} === 'docx'}"
+                                            press="onOpenPreview"/>
+
+                                    </VBox>
+                                </cells>
+
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                    
+                
+
+            </VBox>
+
+        </content>
+        <footer>
+
+            <Toolbar>
+
+                <ToolbarSpacer/>
+
+                <Button
+                    text="Submit"
+                    type="Emphasized"
+                    press="onSubmit"/>
+
+            </Toolbar>
+
+        </footer>
+
+    </Page>
+
+</mvc:View>
